@@ -10,7 +10,10 @@ export function SocketProvider({ id, children }) {
     const [socket, setSocket] = useState();
 
     useEffect(() => {
-        const newSocket = io("http://localhost:5000", { query: { id } });
+        // const newSocket = io("http://localhost:5000", { query: { id } });
+        const newSocket = io("https://chat-app-tenaciti-demo.herokuapp.com/", {
+            query: { id },
+        });
         setSocket(newSocket);
         return () => newSocket.close();
     }, [id]);
